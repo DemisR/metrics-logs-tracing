@@ -1,0 +1,49 @@
+
+info:
+  app:
+    name: demo-opentracing-springboot
+    description: Demo opne tracing
+    version: 0.0.1
+
+spring:
+  application:
+    name: demo-opentracing-springboot
+
+logging:
+  level:
+    org.springframework.web: WARN
+    be.lampiris: INFO
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, info, health, env, scheduledtasks
+  info:
+    git:
+      mode: full
+      enabled: true
+  health:
+    diskspace:
+      enabled: true
+
+
+
+opentracing:
+  jaeger:
+    udp-sender:
+      host: localhost
+      port: 6831
+    const-sampler:
+      decision: true
