@@ -44,6 +44,15 @@ services:
     command: -config.file=/etc/promtail/docker-config.yaml
 
 
+  ##### Demo applications #####
+  app-python:
+    build: ./app-python
+    environment:
+      - JAEGER_HOST=jaeger
+      - DEBUG_METRICS=false
+    ports:
+      - "5000:5000"
+
 volumes:
     prometheus_data: {}
     grafana_data: {}

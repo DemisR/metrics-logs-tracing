@@ -1,32 +1,27 @@
 
+docker-compose up -d --build
+
+
 Jaeger : http://localhost:16686   
 Prometheus : http://localhost:9090   
 Grafana : http://localhost:3000   
 
+app-python : http://localhost:5000  
 ---
 # Run springboot intelij
 
 ```
-# Run jaeger
-docker run -d —name jaeger \
-  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
-  -p 5775:5775/udp \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
-  -p 16686:16686 \
-  -p 14268:14268 \
-  -p 14250:14250 \
-  -p 9411:9411 \
-  jaegertracing/all-in-one:1.16
-
-
 # get hello
 curl localhost:8080/hello
 
 curl localhost:8080/chaining
 
 Open the Jaeger UI on http://localhost:16686   
+
+
+
+
+curl localhost:5000/models
 
 ```
 
@@ -89,3 +84,5 @@ https://github.com/opentracing-contrib/java-spring-cloud
 https://grafana.com/blog/2019/07/15/lokis-path-to-ga-docker-logging-driver-plugin-support-for-systemd/
 
 https://devopstales.github.io/cloud/grafana-loki/
+
+- Add dashboard python flask app https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard/
