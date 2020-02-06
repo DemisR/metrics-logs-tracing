@@ -76,6 +76,7 @@ https://github.com/opentracing-contrib/java-spring-cloud
 
 [GitHub - opentracing-contrib/java-spring-jaeger](https://github.com/opentracing-contrib/java-spring-jaeger)
 
+https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard/
 
 
 # TODO
@@ -85,4 +86,6 @@ https://grafana.com/blog/2019/07/15/lokis-path-to-ga-docker-logging-driver-plugi
 
 https://devopstales.github.io/cloud/grafana-loki/
 
-- Add dashboard python flask app https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard/
+- Grab metrics from python app with prometheus
+- Add trace id in logs python app
+- Create angular frontend and add opentracing https://doc.esdoc.org/github.com/opentracing/opentracing-javascript/

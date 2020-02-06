@@ -53,6 +53,13 @@ services:
     ports:
       - "5000:5000"
 
+  app-springboot:
+    build: ./app-springboot
+    environment:
+      - JAEGER_HOST=jaeger
+    ports:
+      - "8080:8080"
+      
 volumes:
     prometheus_data: {}
     grafana_data: {}
