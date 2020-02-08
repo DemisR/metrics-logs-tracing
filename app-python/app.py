@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 import time
 import random
+import requests
 from jaeger_client import Config
 from flask_opentracing import FlaskTracer
-from flask import Flask, request , json
+from flask import Flask, request , json , jsonify
 from os import getenv
 from prometheus_flask_exporter import PrometheusMetrics
 
@@ -25,23 +26,51 @@ config = Config(config={'sampler': {'type': 'const', 'param': 1},
 jaeger_tracer = config.initialize_tracer()
 tracer = FlaskTracer(jaeger_tracer, True, app)
 
+
 @app.route('/')
 def main():
     pass  # requests tracked by default
 
+
 @app.route('/models')
-@tracer.trace()
 def models():
     # Extract the span information for request object.
-    with jaeger_tracer.start_active_span(
-        'python webserver internal span of log method') as scope:
+    # SLOWING QUERY
+    time.sleep(random.random() * 0.3)
 
+    with jaeger_tracer.start_active_span(
+        'Retrieve list of models') as scope:
+        # SLOWING QUERY
+        r = requests.get('http://httpbin.org/delay/' + str(random.random() * 0.8))
         models = [{"id": 1, "name": "model S"}, {"id": 2, "name": "model X"}, {"id": 3, "name": "model 3"}]
 
-        # SLOWING QUERY
-        time.sleep(random.random() * 0.8)
+        return jsonify(models)
 
-        return json.dumps(models)
+
+@app.route('/github')
+def github():
+    url = "https://api.github.com"
+    headers = { 'Accept' : 'application/vnd.github.v3+json'}
+
+    try:
+
+        response = requests.get(url + '/users/' + 'DemisR' + '/repos', headers=headers)
+
+        repositories = []
+        for repository in response.json():
+            item = {
+                'name' : repository['name'],
+                'description' : repository['description'],
+                'html_url' : repository['html_url']
+            }
+            repositories.append(item)
+
+        return jsonify(repositories)
+
+    except:
+        return json.dumps({ "error": error }), 500
+
+
 
 
 if __name__ == '__main__':
