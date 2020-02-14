@@ -27,5 +27,14 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: 
-        - host.docker.internal:8080 
+        - app-springboot:8080 
+        # host.docker.internal resolve ip of host
+
+  - job_name: 'python'
+    metrics_path: /metrics
+    scheme: http
+    scrape_interval: 5s
+    static_configs:
+      - targets: 
+        - app-python:5000 
         # host.docker.internal resolve ip of host

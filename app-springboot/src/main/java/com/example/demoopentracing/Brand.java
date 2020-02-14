@@ -1,25 +1,24 @@
 package com.example.demoopentracing;
+
 import lombok.Data;
+
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Data
 @Entity
-@RestResource(rel= "cars", path = "cars")
-public class Cars {
-
+@RestResource(rel="brand", path="brand")
+public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @NotBlank(message = "Brand")
-    private String brand;
+    @NotBlank(message = "Name may not be blank")
+    private String name;
 
-    @NotBlank(message = "Model")
-    private String model;
-
-    private String owner;
-
+    @OneToMany(mappedBy = "brand")
+    private List<Model> models;
 }

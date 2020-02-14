@@ -105,3 +105,53 @@ Temporary Items
 
 
 *.db
+
+
+
+
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+app-angular/dist
+app-angular/dist-server
+app-angular/tmp
+app-angular/out-tsc
+
+# dependencies
+app-angular/node_modules
+
+# IDEs and editors
+app-angular/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+app-angular/.sass-cache
+app-angular/connect.lock
+app-angular/coverage
+app-angular/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+app-angular/typings
+
+# e2e
+app-angular/e2e/*.js
+app-angular/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db

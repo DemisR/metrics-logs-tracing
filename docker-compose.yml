@@ -37,11 +37,11 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
 
-  promtail:
-    image: grafana/promtail:latest
-    volumes:
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/docker-config.yaml
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   volumes:
+  #     - /var/log:/var/log
+  #   command: -config.file=/etc/promtail/docker-config.yaml
 
 
   ##### Demo applications #####
@@ -52,6 +52,10 @@ services:
       - DEBUG_METRICS=false
     ports:
       - "5000:5000"
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
 
   app-springboot:
     build: ./app-springboot
@@ -59,7 +63,11 @@ services:
       - JAEGER_HOST=jaeger
     ports:
       - "8080:8080"
-      
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"   
+        
 volumes:
     prometheus_data: {}
     grafana_data: {}
