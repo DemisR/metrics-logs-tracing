@@ -7,8 +7,7 @@ Prometheus : http://localhost:9090
 Grafana : http://localhost:3000   (user: admin / pass: workshop)
 Sentry : https://sentry.io/demo-lm/angular/getting-started/javascript-angular/
 app-python : http://localhost:5000  
-
-
+app-springboot : http://localhost:8080  
 ---
 
 

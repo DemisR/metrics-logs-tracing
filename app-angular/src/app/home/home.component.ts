@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Car } from '../model/car';
+import { CarService } from '../service/car.service';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,22 @@ export class HomeComponent implements OnInit {
 
   cars = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private carService: CarService) { }
 
   ngOnInit() {
 
-    this.dataService.sendGetRequest().subscribe((data: any[])=>{
-      console.log(data);
-      this.cars = (<any>data)._embedded.car;
-      console.log(this.cars);
-    })
+    this.getCarsList();
+
   }
+
+  getCarsList(): void {
+    this.carService
+        .listCars()
+        .subscribe(data => {
+            this.cars = data;
+            console.log('Data:', data);
+        }, err => {});
+  }
+
 
 }

@@ -13,7 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { SentryErrorHandler } from './error-handler'
+import { SentryErrorHandler } from './error-handler';
+import { CarService } from './service/car.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { SentryErrorHandler } from './error-handler'
     MatCardModule,
     MatProgressSpinnerModule
   ],
-  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}],
+  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
