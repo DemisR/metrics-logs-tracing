@@ -4,62 +4,12 @@ docker-compose up -d --build
 
 Jaeger : http://localhost:16686   
 Prometheus : http://localhost:9090   
-Grafana : http://localhost:3000   
-
+Grafana : http://localhost:3000   (user: admin / pass: workshop)
+Sentry : https://sentry.io/demo-lm/angular/getting-started/javascript-angular/
 app-python : http://localhost:5000  
+
+
 ---
-# Run springboot intelij
-
-```
-# get hello
-curl localhost:8080/hello
-
-curl localhost:8080/chaining
-
-Open the Jaeger UI on http://localhost:16686   
-
-
-
-
-curl localhost:5000/models
-
-```
-
-
-# Instrument Code: Java SpringBoot
-
-With the version 2 of SpringBoot , the standard way to generte metrics it's use Micrometer library. (backported in Springboot 1.5)
-This library can expose metrics in differents formats and you can easilly add custom metrics to you app.
-
-If you enable Prometeus format for SpringBoot micrometer, you can use this dashboard for view all standard metrics.
-Install dashboard https://grafana.com/dashboards/4701
-
-Look, the example code for see how you can add custom metrics to your application.
-
-( Counter of hellos )
-
-
-
-
-
-
-
-
-
-## 5 - Setup Grafana
-
-Uncomment grafana in docker-compose.yml and launch it:
-
-```
-docker-compose up -d grafana
-```
-
-Open [http://localhost:3000](http://localhost:3000) (user: admin / pass: workshop).
-
-Add a new Prometheus datasource to Grafana.
-
-- Name : Prometheus
-- Pointing to http://prometheus:9090
 
 
 # Setup logs Docker to Loki
@@ -103,6 +53,17 @@ https://github.com/opentracing-contrib/java-spring-cloud
 
 https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard/
 
+
+# Sentry
+https://nils-mehlhorn.de/posts/angular-error-tracking-with-sentry
+
+For simplicity we use sentry.io , but you can use docker-compose
+https://gist.github.com/denji/b801f19d95b7d7910982c22bb1478f96
+https://github.com/yhirano55/sentry-docker-compose/blob/master/docker-compose.yml
+
+
+
+--- 
 
 # TODO
 - Add trace_id in logs and link to dashboard jaeger

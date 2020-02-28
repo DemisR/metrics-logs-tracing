@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
     this.dataService.sendGetRequest().subscribe((data: any[])=>{
       console.log(data);
-      this.cars = data._embedded.car;
+      this.cars = (<any>data)._embedded.car;
       console.log(this.cars);
     })
   }

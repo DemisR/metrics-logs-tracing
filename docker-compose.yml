@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+############################## Metrics ##############################
   prometheus:
     image: prom/prometheus:v2.15.2
     command:
@@ -25,11 +26,17 @@ services:
       - grafana_data:/var/lib/grafana
       - ./grafana/:/etc/grafana
 
+######################################################################
+############################## Tracing ###############################
+
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
       - "6831:6831/udp"
       - "16686:16686"
+
+######################################################################
+############################### Logs #################################
 
   loki:
     image: grafana/loki:latest
@@ -37,14 +44,9 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
 
-  # promtail:
-  #   image: grafana/promtail:latest
-  #   volumes:
-  #     - /var/log:/var/log
-  #   command: -config.file=/etc/promtail/docker-config.yaml
+###############################################################################
+############################## Demo applications ##############################
 
-
-  ##### Demo applications #####
   app-python:
     build: ./app-python
     environment:
@@ -67,7 +69,9 @@ services:
       driver: loki
       options:
         loki-url: "http://localhost:3100/loki/api/v1/push"   
-        
+
+##############################################################################
+
 volumes:
-    prometheus_data: {}
-    grafana_data: {}
+  prometheus_data: {}
+  grafana_data: {}
