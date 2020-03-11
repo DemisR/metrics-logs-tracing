@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../model/car';
 import { CarService } from '../service/car.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CardetailsComponent } from './cardetails/cardetails.component';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +12,9 @@ import { CarService } from '../service/car.service';
 export class HomeComponent implements OnInit {
 
   cars = [];
+  cardetails ;
 
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -26,6 +29,17 @@ export class HomeComponent implements OnInit {
             this.cars = data;
             console.log('Data:', data);
         }, err => {});
+  }
+
+  getCarDetail(model): void {
+    this.carService
+        .getCarDetails(model)
+        .subscribe(data => {
+            this.cardetails = data;
+            console.log('Data:', data);
+        }, err => {});
+
+    this.dialog.open(CardetailsComponent, this.cardetails);
   }
 
 

@@ -15,12 +15,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SentryErrorHandler } from './error-handler';
 import { CarService } from './service/car.service';
+import { CardetailsComponent } from './home/cardetails/cardetails.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    CardetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { CarService } from './service/car.service';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, CarService],
   bootstrap: [AppComponent]

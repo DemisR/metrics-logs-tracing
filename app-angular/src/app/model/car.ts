@@ -3,6 +3,7 @@ import { Model } from './model';
 export interface Car {
   id?: string;
   plaque?: string;
+  employee?: string;
   model?: Model;
   _links?: {self: {href: string}};
 }

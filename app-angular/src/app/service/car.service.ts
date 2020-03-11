@@ -5,6 +5,7 @@ import {  throwError, Observable } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
 import { Car, GetCars } from '../model/car';
+import { Model } from '../model/model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ import { Car, GetCars } from '../model/car';
 export class CarService {
 
   private CAR_URL = 'http://localhost:8080/api/car';
+  private CARDETAILS_URL = 'http://localhost:8080/api/car-details';
+  //  private CARDETAILS_URL = 'http://httpbin.org/post';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -34,7 +37,7 @@ export class CarService {
 
   public listCars(): Observable<Car[]> {
     return this.httpClient
-      .get<GetCars>( this.CAR_URL )
+      .get<GetCars>( this.CAR_URL + '?projection=expand' )
       .pipe(
         map(response => response._embedded.car)
       );
@@ -48,4 +51,7 @@ export class CarService {
     return this.httpClient.post<Car>(this.CAR_URL, car);
   }
 
+  public getCarDetails(model) {
+    return this.httpClient.post<Model>(this.CARDETAILS_URL, model);
+  }
 }

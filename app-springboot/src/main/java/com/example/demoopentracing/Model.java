@@ -23,7 +23,8 @@ public class Model {
     @NotBlank(message = "Name may not be blank")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="brand_id")
-    private Brand brand;
+    @NotBlank(message = "Brand may not be blank")
+    private String brand;
+
+    // Implement get model details calling python app and search on internet
 }

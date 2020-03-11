@@ -23,7 +23,7 @@ public class HelloController {
         return "Hello from Spring Boot!";
     }
 
-    @RequestMapping("/chaining")
+    @GetMapping("/chaining")
     public String chaining() {
         ResponseEntity<String> response = restTemplate.getForEntity("http://app-python:5000/models", String.class);
         return "Chaining + " + response.getBody();

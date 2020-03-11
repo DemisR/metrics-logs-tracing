@@ -16,13 +16,11 @@ public class Car {
     @NotNull
     private String plaque;
 
+    private String employee;
+
     @ManyToOne
     @JoinColumn(name="model_id")
     private Model model;
-
-    public Car() {
-        super();
-    }
 
     public Long getId() {
         return id;
@@ -38,6 +36,21 @@ public class Car {
 
     public void setPlaque(String plaque) {
         this.plaque = plaque;
+    }
+
+    public String getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(String employee) {
+        this.employee = employee;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+    public void setModel(Model model) {
+        this.model = model;
     }
 
 }
