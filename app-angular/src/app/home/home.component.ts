@@ -36,10 +36,11 @@ export class HomeComponent implements OnInit {
         .getCarDetails(model)
         .subscribe(data => {
             this.cardetails = data;
-            console.log('Data:', data);
+            this.dialog.open(CardetailsComponent, {
+              data: this.cardetails
+            });
         }, err => {});
 
-    this.dialog.open(CardetailsComponent, this.cardetails);
   }
 
 

@@ -70,10 +70,10 @@ services:
       options:
         loki-url: "http://localhost:3100/loki/api/v1/push"   
 
-  app-angular:
-    build: ./app-angular
-    ports:
-      - "4200:80"
+  # app-angular:
+  #   build: ./app-angular
+  #   ports:
+  #     - "4200:80"
 ##############################################################################
 
 volumes:

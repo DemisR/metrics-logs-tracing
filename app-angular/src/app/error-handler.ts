@@ -9,7 +9,9 @@ Sentry.init({
 export class SentryErrorHandler implements ErrorHandler {
   constructor() {}
   handleError(error) {
-    Sentry.captureException(error.originalError || error);
+    const eventId = Sentry.captureException(error.originalError || error);
+    // Open Collecting feedback
+    Sentry.showReportDialog({ eventId });
     throw error;
   }
 }

@@ -22,3 +22,7 @@ curl -i -X POST -H "Content-Type:application/json" -d '{"plaque":"1-EFG-456", "e
 
 # Car Details
 curl -i -X POST -H "Content-Type:application/json" -d '{"name":"Model S" , "brand" : "Tesla"}' http://localhost:8080/api/car-details
+
+
+# Car Details Python
+curl -i -X POST -H "Content-Type:application/json" -d '{"name":"Model S" , "brand" : "Tesla"}' http://localhost:5000/car-info

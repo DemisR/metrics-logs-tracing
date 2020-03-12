@@ -13,9 +13,9 @@ public class CarDetailsController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @PostMapping(path = "/car-details",consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/api/car-details",consumes = "application/json", produces = "application/json")
     public String getCarDetails(@RequestBody Model model) {
-        String CarDetailsUrl = "http://app-python:5000/models";
+        String CarDetailsUrl = "http://app-python:5000/car-info";
 
         String response = restTemplate.postForObject( CarDetailsUrl, model, String .class);
         return response;

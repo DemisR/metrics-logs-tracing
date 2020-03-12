@@ -4,7 +4,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +17,7 @@ import { SentryErrorHandler } from './error-handler';
 import { CarService } from './service/car.service';
 import { CardetailsComponent } from './home/cardetails/cardetails.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatProgressSpinnerModule,
     MatDialogModule
   ],
-  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, CarService],
+  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler},{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }, CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

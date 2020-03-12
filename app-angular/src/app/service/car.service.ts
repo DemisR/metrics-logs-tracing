@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 
 import {  throwError, Observable } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 
 import { Car, GetCars } from '../model/car';
 import { Model } from '../model/model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +18,6 @@ export class CarService {
   //  private CARDETAILS_URL = 'http://httpbin.org/post';
 
   constructor(private httpClient: HttpClient) { }
-
-  // handleError(error: HttpErrorResponse) {
-  //   let errorMessage = 'Unknown error!';
-  //   if (error.error instanceof ErrorEvent) {
-  //     // Client-side errors
-  //     errorMessage = `Error: ${error.error.message}`;
-  //   } else {
-  //     // Server-side errors
-  //     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-  //   }
-  //   window.alert(errorMessage);
-  //   return throwError(errorMessage);
-  // }
 
   // public sendGetRequest(){
   //   return this.httpClient.get(this.CAR_URL).pipe(catchError(this.handleError));
@@ -51,7 +39,12 @@ export class CarService {
     return this.httpClient.post<Car>(this.CAR_URL, car);
   }
 
-  public getCarDetails(model) {
-    return this.httpClient.post<Model>(this.CARDETAILS_URL, model);
+  // public getCarDetails(model) {
+  //   return this.httpClient.post<Model>(this.CARDETAILS_URL, model);
+  // }
+
+  public getCarDetails(model): Observable<JSON>{
+    return this.httpClient.post<JSON>(this.CARDETAILS_URL, model);
   }
+
 }
