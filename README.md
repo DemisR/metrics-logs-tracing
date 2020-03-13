@@ -15,6 +15,7 @@ app-python : http://localhost:5000
 app-springboot : http://localhost:8080  
 app-angular : http://localhost:4200/
 
+![Architecture](./architecture.png)
 
 # Setup
 
