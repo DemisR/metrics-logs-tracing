@@ -34,8 +34,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           }
           // Send error to Sentry
           captureMessage(errorMessage);
-          // Open Collecting feedback
-          // const eventId = Sentry.captureException(errorMessage  || error);
+          // const eventId = Sentry.captureException(error.originalError || error);
           // Sentry.showReportDialog({ eventId });
           return throwError(errorMessage);
         })

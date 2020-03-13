@@ -39,8 +39,9 @@ export class HomeComponent implements OnInit {
             this.dialog.open(CardetailsComponent, {
               data: this.cardetails
             });
-        }, err => {});
-
+        }, err => {
+          // throw new Error( err );
+        });
   }
 
 

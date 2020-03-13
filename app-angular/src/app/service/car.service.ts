@@ -43,7 +43,7 @@ export class CarService {
   //   return this.httpClient.post<Model>(this.CARDETAILS_URL, model);
   // }
 
-  public getCarDetails(model): Observable<JSON>{
+  public getCarDetails(model): Observable<JSON> {
     return this.httpClient.post<JSON>(this.CARDETAILS_URL, model);
   }
 

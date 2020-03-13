@@ -39,11 +39,13 @@ import { HttpErrorInterceptor } from './http-error.interceptor';
     MatProgressSpinnerModule,
     MatDialogModule
   ],
-  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler},{
+  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler},
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true
-  }, CarService],
+  },
+  CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
