@@ -5,7 +5,7 @@ Demo of observability capabilities with different frameworks.
 
 docker-compose up -d --build
 
-# URLs
+# Architecture and URLs
 
 Jaeger : http://localhost:16686   
 Prometheus : http://localhost:9090   
@@ -50,14 +50,14 @@ docker plugin rm loki
 
 - [Spring Boot Tutorial - Bootstrap a Simple App | Baeldung](https://www.baeldung.com/spring-boot-start)
 - [Hawkular - OpenTracing Spring Boot Instrumentation](https://www.hawkular.org/blog/2017/06/9/opentracing-spring-boot.html)
-- https://github.com/opentracing-contrib/java-spring-cloud
+- [OpenTracing Spring Cloud](https://github.com/opentracing-contrib/java-spring-cloud)
 - [OpenTracing Spring Boot Instrumentation - DZone Java](https://dzone.com/articles/opentracing-spring-boot-instrumentation)
 - [Mission Control : JVM + IoT = FUN : Deep dive into distributed tracing with Spring Boot and Flight Recorder](http://www.wengnermiro.com/2018/12/deep-dive-into-distributed-tracing-with.html)
 - [Mastering Distributed Tracing: Analyzing performance in microservices and … - Yuri Shkuro - Google Livres](https://books.google.be/books?id=4AuLDwAAQBAJ&pg=PA149&lpg=PA149&dq=example+opentracing-spring-cloud-starter&source=bl&ots=Of1FBVdgjC&sig=ACfU3U3T2EOI0cKjiO-P_upcnQ4agXjbLg&hl=fr&sa=X&ved=2ahUKEwja8diimrbnAhVNLVAKHfG1DMMQ6AEwEnoECAwQAQ#v=onepage&q=example%20opentracing-spring-cloud-starter&f=false)
 - [Mastering-Distributed-Tracing/Chapter04 at master · PacktPublishing/Mastering-Distributed-Tracing · GitHub](https://github.com/PacktPublishing/Mastering-Distributed-Tracing/tree/master/Chapter04)
 - [GitHub - opentracing-contrib/java-spring-jaeger](https://github.com/opentracing-contrib/java-spring-jaeger)
-- https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard/
-
+- [Grafana Dashboard for official Prometheus Python Client's metrics](https://github.com/pilosus/prometheus-client-python-app-grafana-dashboard)
+- [Angular sentry](https://nils-mehlhorn.de/posts/angular-error-tracking-with-sentry)
 
 ## Sentry
 
@@ -72,14 +72,7 @@ https://github.com/yhirano55/sentry-docker-compose/blob/master/docker-compose.ym
 --- 
 
 # TODO
-- Add trace_id in logs and link to dashboard jaeger
-- Add loki plugin for logs 
-https://github.com/grafana/loki/blob/master/docs/clients/docker-driver/README.md
-https://github.com/grafana/loki/tree/master/cmd/docker-driver
-https://grafana.com/blog/2019/07/15/lokis-path-to-ga-docker-logging-driver-plugin-support-for-systemd/
-
-https://devopstales.github.io/cloud/grafana-loki/
-
+- Add trace_id in logs and link to dashboard jaeger [Standard logging integration #92](https://github.com/opentracing-contrib/java-spring-cloud/issues/92)
 - Grab metrics from python app with prometheus
 - Add trace id in logs python app
 - Create angular frontend and add opentracing https://doc.esdoc.org/github.com/opentracing/opentracing-javascript/

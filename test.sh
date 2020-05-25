@@ -26,3 +26,9 @@ curl -i -X POST -H "Content-Type:application/json" -d '{"name":"Model S" , "bran
 
 # Car Details Python
 curl -i -X POST -H "Content-Type:application/json" -d '{"name":"Model S" , "brand" : "Tesla"}' http://localhost:5000/car-info
+
+
+
+
+# LOKI query
+{compose_service="app-springboot"}
