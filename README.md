@@ -63,7 +63,7 @@ docker plugin rm loki
 
 https://nils-mehlhorn.de/posts/angular-error-tracking-with-sentry
 
-For simplicity we use sentry.io , but you can use docker-compose
+For simplicity I use sentry.io , but you can use docker-compose
 https://gist.github.com/denji/b801f19d95b7d7910982c22bb1478f96
 https://github.com/yhirano55/sentry-docker-compose/blob/master/docker-compose.yml
 
